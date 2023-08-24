@@ -6,6 +6,7 @@ from django.core.exceptions import PermissionDenied
 from .forms import VendorForm
 from accounts.forms import UserForm
 from accounts.models import UserProfile, User
+from accounts.utils import send_verification_email
 
 # Create your views here.
 
@@ -41,8 +42,9 @@ def registerVendor(request):
 			vendor.user_profile = user_profile
 			vendor.save()
 
-			messages.success(request, 'Vendor is registered successfully. Please wait for approval.')
-			return redirect('home')
+			send_verification_email(request, user)
+
+			return redirect('vendor_account_activation_link_confirmation')
 
 
 	context = {
@@ -51,6 +53,11 @@ def registerVendor(request):
 	 }
 
 	return render(request, 'vendor/registerVendor.html', context)
+
+
+
+def vendor_account_activation_link_confirmation(request):
+	return render(request, 'vendor/vendor_account_activation_link_confirmation.html')
 
 
 
