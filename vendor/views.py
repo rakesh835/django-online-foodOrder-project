@@ -7,6 +7,7 @@ from .forms import VendorForm
 from accounts.forms import UserForm
 from accounts.models import UserProfile, User
 from accounts.utils import send_verification_email
+from .models import Vendor
 
 # Create your views here.
 
@@ -64,6 +65,17 @@ def vendor_account_activation_link_confirmation(request):
 @user_passes_test(check_role_vendor)
 def vendorDashboard(request):
 	if not request.user.is_authenticated:
-		return redirect('login')
+		return redirect('login_user')
 
 	return render(request, 'vendor/vendorDashboard.html')
+
+
+
+@user_passes_test(check_role_vendor)
+def vendor_profile(request):
+	if not request.user.is_authenticated:
+		return redirect('login_user')
+
+	return render(request, 'vendor/vendor_profile.html')
+
+

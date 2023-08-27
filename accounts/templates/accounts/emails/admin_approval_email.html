@@ -1,0 +1,18 @@
+{% autoescape off %}
+
+Hi, {{ user.first_name }},
+
+{% if is_approved %}
+
+Congratulations, Your restaurant has been approved.
+
+{% else %}
+
+Sorry, Your restaurant is not eligible to publish food menu on our marketplace.
+For more details please contact out support team at support@onlineFoodOrder.com
+
+{% endif %}
+
+Admin --onlineFoodOrder
+
+{% endautoescape %}

@@ -120,6 +120,7 @@ class UserProfile(models.Model):
 		return self.user.email
 
 
-
+	def full_address(self):
+		return f'{self.address_line_1}, {self.address_line_2}'
 
 			
