@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import PermissionDenied
 
 from .forms import VendorForm
-from accounts.forms import UserForm
+from accounts.forms import UserForm, UserProfileForm
 from accounts.models import UserProfile, User
 from accounts.utils import send_verification_email
 from .models import Vendor
@@ -75,7 +75,36 @@ def vendorDashboard(request):
 def vendor_profile(request):
 	if not request.user.is_authenticated:
 		return redirect('login_user')
+	user_profile = get_object_or_404(UserProfile, user=request.user)
+	vend_profile = get_object_or_404(Vendor, user=request.user)
 
-	return render(request, 'vendor/vendor_profile.html')
+	if request.method == 'POST':
+		user_profile_form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
+		vendor_form = VendorForm(request.POST, request.FILES, instance=vend_profile)
+
+		if user_profile_form.is_valid() and vendor_form.is_valid():
+			user_profile_form.save()
+			vendor_form.save()
+
+			messages.success(request, 'Your vendor profile is updated successfully.')
+			return redirect('vendor_profile')
+		else:
+			messages.error(request, 'Please enter valid field values.')
+			return redirect('vendor_profile')
+
+
+	else:
+		user_profile_form = UserProfileForm(instance=user_profile)
+		vendor_form = VendorForm(instance=vend_profile)
+
+
+	context = {
+			'user_profile_form': user_profile_form,
+			'vendor_form': vendor_form,
+			'user_profile': user_profile,
+			'vend_profile': vend_profile,
+	}
+
+	return render(request, 'vendor/vendor_profile.html', context)
 
 
