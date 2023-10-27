@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import PermissionDenied
+from django.template.defaultfilters import slugify
 
 from .forms import VendorForm
 from accounts.forms import UserForm, UserProfileForm
@@ -39,6 +40,8 @@ def registerVendor(request):
 
 			vendor = vendor_form.save(commit=False)
 			vendor.user = user
+			vendor_name = vendor_form.cleaned_data.get('vendor_name')
+			vendor.vendor_slug = username+'-'+slugify(vendor_name)
 			user_profile = UserProfile.objects.get(user=user)
 			vendor.user_profile = user_profile
 			vendor.save()

@@ -9,6 +9,7 @@ class Vendor(models.Model):
 	user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)
 	user_profile = models.OneToOneField(UserProfile, related_name='UserProfile', on_delete=models.CASCADE)
 	vendor_name = models.CharField(max_length=50)
+	vendor_slug = models.SlugField(max_length=100, unique=True)
 	vendor_license = models.ImageField(upload_to='vendor/license')
 	is_approved = models.BooleanField(default=False)
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -32,9 +33,9 @@ class Vendor(models.Model):
 					
 				if self.is_approved == True:
 					mail_subject = 'Congratulations, Your restaurant has been approved.'
-					send_approval_email(mail_subject, mail_template, context)
 				else:
 					mail_subject = 'Sorry, Your restaurant is not eligible to publish food menu on our marketplace.'
-					send_approval_email(mail_subject, mail_template, context)
+				
+				send_approval_email(mail_subject, mail_template, context)
 
 		return super(Vendor, self).save(*args, **kwargs)

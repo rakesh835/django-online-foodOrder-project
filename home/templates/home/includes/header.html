@@ -3,9 +3,9 @@
 
 <header id="header">
 	<div class="main-header">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
-				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 					<div class="logo">
 						<figure>
 							<a href="{% url 'home' %}" class="light-logo">
@@ -16,71 +16,6 @@
 					
 					<div class="main-location">
 						<ul>
-							<li class="location-has-children">
-								<a href="#"><i class="icon-compass-with-white-needles"></i>Feel Like Eating</a>
-								<ul>
-
-									<li><a href="listings.html"><img alt="" src="{% static 'home/extra-images/food-icon-05-1.png' %}">Apple
-											Juice</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-19-1.png">BB.Q</a><span></span>
-									</li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-22-1.png">Beef
-											Roast</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-10-1.png">Carrot
-											Juice</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-03-1.png">Cheese
-											Burger</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-07-1.png">Chicken
-											Roast</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-01-1.png">Chines
-											Soup</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-18-1.png">Cold
-											Coffee</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-23-1.png">Cold
-											Drink</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-28-1.png">Cupcake</a><span></span>
-									</li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-21-1.png">Doughnut</a><span></span>
-									</li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-25-1.png">Drum
-											Stick</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-11-1.png">Egg
-											Fry</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-12-1.png">Fish
-											Fry</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-13-1.png">Fresh
-											Juice</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-30-1.png">Hot
-											Dogs</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-26-1.png">Ice
-											Cream</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-15-1.png">Magi</a>
-										<span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-09-1.png">Noodles</a>
-										<span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-14-1.png">Pastry</a><span></span>
-									</li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-29-1.png">Pizza</a><span></span>
-									</li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-06-1.png">Potato
-											Fries</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-24-1.png">Prawns</a>
-										<span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-17-1.png">Sham
-											pane</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-27-1.png">Shawarma</a><span></span>
-									</li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-04-1.png">Soda
-											water</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-16-1.png">Stakes</a>
-										<span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-22-1.png">Steam
-											Roast</a> <span></span> </li>
-									<li><a href="listings.html"><img alt="" src="assets/extra-images/food-icon-02-1.png">Tea</a><span></span>
-									</li>
-
-								</ul>
-							</li>
 							<li class="location-has-children choose-location">
 								<a href="#"><i class="icon-location-pin2"></i>Choose location</a>
 								<ul>
@@ -136,38 +71,33 @@
 											</form>
 										</div>
 									</li>
-									<li class="popular-location">Popular Locations</li>
-									<li>
-										<ul>
-											<li><a href="#">Acle</a></li>
-											<li><a href="#">Cheshire</a></li>
-											<li><a href="#">Crewe</a></li>
-											<li><a href="#">Devon</a></li>
-											<li><a href="#">England</a></li>
-										</ul>
-									</li>
 								</ul>
 							</li>
 						</ul>
 					</div>
 				</div>
 				
-				{% if user.is_authenticated %}
-					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-						<div class="login-option">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="login-option">
+
+						{% if user.is_authenticated %}
+							<a href="{% url 'myCart' %}">
+								<i class="fa fa-shopping-cart text-danger" style="font-size: 30px"></i>
+								<span class="badge badge-warning" id="cart_counter" style="border-radius: 50px; position: relative; bottom: 10px; left: -5px;">{{ cart_count }}</span>
+							</a>
+							
+							<a href="{% url 'marketplace' %}" class="btn btn-danger text-uppercase font-weight-bold">Marketplace</a>
 							<a class="cs-color cs-popup-joinus-btn login-popup" data-target="#sign-in" href="{% url 'myAccount' %}">My Account</a>
 							<a class="cs-color cs-popup-joinus-btn login-popup" href="{% url 'logout_user' %}">Logout</a>
-						</div>
-					</div>
-				{% else %}
-					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-						<div class="login-option">
+						{% else %}
+							<a href="{% url 'marketplace' %}" class="btn btn-danger text-uppercase font-weight-bold">Marketplace</a>
 							<a class="cs-color cs-popup-joinus-btn login-popup" data-target="#sign-in" href="{% url 'login_user' %}">Login</a>
 							<a class="cs-color cs-popup-joinus-btn login-popup" href="{% url 'registerUser' %}">Register</a>
 							<a class="get-start-btn" href="{% url 'registerVendor' %}">Register Restaurant </a>
-						</div>
+						{% endif %}
+
 					</div>
-				{% endif %}
+				</div>
 
 			</div>
 		</div>
