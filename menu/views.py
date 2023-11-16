@@ -39,13 +39,26 @@ def food_item_by_category(request, pk=None):
 
 @user_passes_test(check_role_vendor)
 def add_category(request):
+	vendor = get_vendor(request)
+	categories = Category.objects.filter(vendor=vendor).values('slug')
+	
+	slugList = []
+	for category in categories:
+		slugList.append(category.get('slug', None))
+	
 	if request.method == 'POST':
 		category_form = CategoryForm(request.POST)
 		if category_form.is_valid():
 			category_name = category_form.cleaned_data.get('category_name')
 			category = category_form.save(commit=False)
 			category.vendor = get_vendor(request)
-			category.slug = slugify(category_name)
+			slug = str(request.user.id) + "-" + slugify(category_name)
+		
+			if slug in slugList:
+				messages.error(request, 'Please enter valid category.')
+				return redirect('add_category')
+			
+			category.slug = slug
 			category.save()
 
 			messages.success(request, 'Category is created successfully.')
@@ -110,8 +123,9 @@ def add_food_item(request):
 		if food_item_form.is_valid():
 			food_title = food_item_form.cleaned_data.get('food_title')
 			foodItem = food_item_form.save(commit=False)
-			foodItem.vendor = get_vendor(request)
-			foodItem.slug = slugify(food_title)
+			vendor = get_vendor(request)
+			foodItem.vendor = vendor
+			foodItem.slug = str(vendor.id) + '-' +slugify(food_title)
 			foodItem.save()
 
 			messages.success(request, 'Food item added successfully.')

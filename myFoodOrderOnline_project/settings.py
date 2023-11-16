@@ -143,3 +143,8 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True)
+
+
+os.environ['PATH'] = 'C:/Users/acer/Desktop/django_projects/myFoodOrderOinline_rathank/myFoodOrderOnline_env/Lib/site-packages/osgeo' + ';' + os.environ['PATH']
+os.environ['PROJ_LIB'] = 'C:/Users/acer/Desktop/django_projects/myFoodOrderOinline_rathank/myFoodOrderOnline_env/Lib/site-packages/osgeo/data/proj' + ';' + os.environ['PATH']
+GDAL_LIBRARY_PATH = 'C:/Users/acer/Desktop/django_projects/myFoodOrderOinline_rathank/myFoodOrderOnline_env/Lib/site-packages/osgeo/gdal304.dll'
